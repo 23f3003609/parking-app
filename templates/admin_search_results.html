@@ -1,0 +1,159 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Lot Search Results
+{% endblock %}
+{% block content %}
+{%if results%}
+<h1>Search Results</h1>
+<hr>
+{%if key=='username' or key=='user_id'%}
+<div class="table border" style="overflow-x:auto; border-radius: 10px; margin-top: 20px; padding: 20px;">
+    <table class="table table-bordered table-hover" style="border:2px solid black ;">
+        <thead>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Email</th>
+                <th scope="col">Username</th>
+                <th scope="col" class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for i in results %}
+                <tr>
+                    <th scope="row">{{i.user_id}}</th>
+                        <th scope="row">{{i.email}}</th>
+                        <td scope="row">{{i.username}}</td>
+                        <td scope="row" class="text-center">
+                                <form method="post" action="/admin_view_user_summary/{{i.user_id}}">
+                                    <button type="submit" class="btn btn-primary">View Summary</button>
+                                </form>
+                        </td>
+                    </th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{%elif key=='lot_location' %}
+                {% if lots %}
+<div class="container mt-4" id="parking-dashboard">
+
+  <!-- Wrap lots horizontally -->
+  <div class="d-flex flex-wrap gap-4 justify-content-center">
+    {% for lot in lots %}
+    <div class="parking-lot-card p-3 shadow rounded">
+      <h5 class="fw-bold">Parking Lot #{{ lot.lot.lot_id }}</h5>
+      <div class="mb-2">
+        <a href="/admin_edit_lot/{{ lot.lot.lot_id }}" class="text-warning text-decoration-none me-2">Edit</a>|
+        <a href="/admin_delete_lot/{{ lot.lot.lot_id }}" class="text-danger text-decoration-none">Delete</a>
+      </div>
+      <p class="text-success fw-bold" style="margin-bottom:5px" >Occupied: {{ lot.occupied_spots }} / {{ lot.total_spots }}</p>
+<hr style="margin:0; background-color: #007bff;width: 100%; border:1px solid black;">
+      <div class="spot-grid">
+        {% if lot.spots %}
+          {% for spot in lot.spots %}
+            {% if spot.status == 'available' %}
+              <div class="spot available">
+                <a href="/admin_view_spots/{{ lot.lot.lot_id }}/{{ spot.spot_id }}" class="text-decoration-none text-dark">A</a>
+              </div>
+            {% else %}
+              <div class="spot occupied">
+                <a href="/admin_view_spots/{{ lot.lot.lot_id }}/{{ spot.spot_id }}" class="text-decoration-none text-dark">O</a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <p class="text-muted">No spots available</p>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{%endif%}
+
+{%endif%}
+{%else%}
+<h1>No Results Found</h1>
+<p class="text-center">No results found for your search criteria.</p>
+
+{%endif%}
+{% endblock %}
+
+{% block style %}
+<style>
+    hr{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-top: 5px solid black;
+    }
+    body {
+        background-color: #F5F5F5;
+    }
+    h1 {
+        margin-top: 64px;
+        text-align: center;
+    }
+    .table {
+         width: 100%;
+        table-layout: auto;
+        background-color: #4DA8DA;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .table th, .table td {
+        white-space: nowrap;
+        text-align: left;
+        padding: 8px;
+        background-color: #FFD66B;
+        vertical-align: middle;
+    }
+
+
+
+.parking-lot-card {
+  width: 280px;
+  background-color: #fdf6ec;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.parking-lot-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  background-color: #ffffff;
+}
+
+.spot-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 30px);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.spot {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 9px;
+  font-weight: bold;
+}
+
+.spot.available {
+  background-color: #a0e7a0;
+}
+
+.spot.occupied {
+  background-color: #f7b5b5;
+}
+
+.add-lot-btn {
+  padding: 8px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+</style>
+{% endblock %}

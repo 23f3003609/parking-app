@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Delete Lot Dashboard
+
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;width: 100%;width: 100vw;display: flex;justify-content: center;align-items: center;">
+  <div class="card p-4" style="width: 100%; max-width: 560px;border-radius: 10px;">
+<h1 class="my-2">View Parking Spot</h1>
+<form class="custom" method="post">
+    <!-- <div class="mb-3">
+    <label for="spot_id" class="form-label">Spot ID:</label>
+    <input id="spot_id" class="form-control" type="text" value="spot_id" readonly>
+  </div>
+
+  <div class="mb-3">
+    <label for="vehicle_no" class="form-label">Vehicle Number:</label>
+    <input id="vehicle_no" class="form-control" type="text" value="vehicle_number" readonly>
+  </div>
+
+  <div class="mb-3">
+    <label for="start" class="form-label">Booked At:</label>
+    <input id="start" class="form-control" type="text" value="booked_at" readonly>
+  </div>
+
+  <div class="mb-3">
+    <label for="release" class="form-label">Released At:</label>
+    <input id="release" class="form-control" type="text" value="released_at" readonly>
+  </div>
+
+  <div class="mb-4">
+    <label for="tcost" class="form-label">Total Cost:</label>
+    <input id="tcost" class="form-control" type="text" value="total_cost" readonly>
+  </div> -->
+  {% for i in spot%}
+    <div class="row mb-3">
+  <label for="spot_id" class="col-sm-5 col-form-label text-end text-end">Spot Id:</label>
+  <div class="col-sm-6">
+    <input id="spot_id" class="form-control" name="spot_id" type="text" value="{{i.spot_id}}" required aria-label="readonly input example" readonly>
+  </div>
+</div>
+        <div class="row mb-3">
+  <label for="address" class="col-sm-5 col-form-label text-end">Status:</label>
+  <div class="col-sm-6">
+    <input id="status" class="form-control" name="status" required value="{{i.status}}" aria-label="readonly input example" readonly>
+  </div>
+</div>
+
+
+
+
+{%endfor%}
+        <div>
+            {%if status=="occupied"%}
+    <button type="submit" name="action" value="view" class="btn btn-success mx-3">View</button>
+    {%endif%}
+  <button type="submit" name="action" value="back" class="btn btn-secondary">Back</button>
+  </div>
+</form>
+  </div>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    .container {
+        background-color: #4DA8DA;
+        border-radius: 10px;
+    }
+
+.custom input{
+  width: 100%;
+  
+}
+
+    .custom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        background-color: #FFD66B;
+    }
+  
+
+    h1 {
+        margin-top: 10px;
+        text-align: center;
+    }
+    
+</style>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Summary Dashboard
+{% endblock %}
+{% block content %}
+<h1>Summary</h1>
+<hr>
+<!--<h3>Active Transactions: {{ongoing_count}}</h3>
+<h3>Past Transactions: {{completed_count}}</h3>
+<h3>Total Spots Booked: {{total_count}}</h3>
+<h3>Total Cost Spent: {{total_cost}}</h3>
+-->
+
+<div class="row text-center">
+    <div class="col-md-3">
+        <div class="card bg-light mb-3">
+            <div class="card-header">Active</div>
+            <div class="card-body"><h4>{{ongoing_count}}</h4></div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-light mb-3">
+            <div class="card-header">Past Transactions</div>
+            <div class="card-body"><h4>{{completed_count}}</h4></div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-light mb-3">
+            <div class="card-header">Total Spots Booked</div>
+            <div class="card-body"><h4>{{total_count}}</h4></div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-light mb-3">
+            <div class="card-header">Total Cost Spent</div>
+            <div class="card-body"><h4>{{total_cost}}</h4></div>
+        </div>
+    </div>
+    <!-- Repeat for other metrics -->
+</div>
+
+<div class="my-5">
+                    <h3 class="mx-4 my-3 mt-5 text-center">Generated Cards Pie Chart</h3> 
+                    <img src="/static/user_summary_pie.png" alt="Generated Cards Pie Chart" class="img-fluid mx-auto d-block mt-4" style="width: 50%;">
+                </div>
+
+
+{% endblock %}
+
+{% block style %}
+<style>
+    .card-header{
+        border-radius: 10px;
+        background-color: #4DA8DA;
+
+    }
+    hr{
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border-top: 5px solid black;
+    }
+    body {
+        background-color: #F5F5F5;
+    }
+    h1 {
+        margin-top: 30px;
+        text-align: center;
+    }
+    .table {
+         width: 100%;
+        table-layout: auto;
+        background-color: #4DA8DA;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .table th, .table td {
+        white-space: nowrap;
+        text-align: left;
+        padding: 8px;
+        background-color: #FFD66B;
+        vertical-align: middle;
+    }
+</style>
+{% endblock %}

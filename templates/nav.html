@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #80D8C3;">
+  <div class="container-fluid">
+    <ion-icon  name="car-sport-outline" size="large"></ion-icon>
+    <a class="navbar-brand" href="#"><strong>SmartLot</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+      {%if user%}
+          {%if user.type=='admin'%}
+              <li class="nav-item">
+              <h2>Welcome {{user.type}}</h2>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+            <li class="nav-item">
+          <a class="nav-link" href="/register">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">LogOut</a>
+        </li>
+          {%else%}
+              <li class="nav-item">
+                <h2>Welcome {{user.username}} </h2>  
+              </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/logout">LogOut</a>
+            </li>
+            {%endif%}
+        
+        {%else%}
+          <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+          </li>
+        {%endif%}
+        
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>

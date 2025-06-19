@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Registered Users
+{% endblock %}
+{% block content %}
+<h1>Search Results</h1>
+<hr>
+
+
+<div class="table border" style="overflow-x:auto; border-radius: 10px; margin-top: 20px; padding: 20px;">
+    <table class="table table-bordered table-hover" style="border:2px solid black ;">
+        <thead>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Email</th>
+                <th scope="col">Username</th>
+                <th scope="col" class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for i in users %}
+                <tr>
+                    <th scope="row">{{i.user_id}}</th>
+                        <th scope="row">{{i.email}}</th>
+                        <td scope="row">{{i.username}}</td>
+                        <td scope="row" class="text-center">
+                                <form method="post" action="/admin_view_user_summary/{{i.user_id}}">
+                                    <button type="submit" class="btn btn-primary">View Summary</button>
+                                </form>
+                        </td>
+                    </th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+{% endblock %}
+
+{% block style %}
+<style>
+    hr{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-top: 5px solid black;
+    }
+    body {
+        background-color: #F5F5F5;
+    }
+    h1 {
+        margin-top: 64px;
+        text-align: center;
+    }
+    .table {
+         width: 100%;
+        table-layout: auto;
+        background-color: #4DA8DA;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .table th, .table td {
+        white-space: nowrap;
+        text-align: left;
+        padding: 8px;
+        background-color: #FFD66B;
+        vertical-align: middle;
+    }
+</style>
+{% endblock %}

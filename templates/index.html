@@ -1,0 +1,103 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+<!--
+<div  class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary"> <div class="col-md-6 p-lg-5 mx-auto my-5"> <h1 class="display-3 fw-bold">Designed for engineers</h1> <h3 class="fw-normal text-muted mb-3">Build anything you want with Aperture</h3> <div class="d-flex gap-3 justify-content-center lead fw-normal"> <a class="icon-link" href="#">
+Learn more
+<svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg> </a> <a class="icon-link" href="#">
+Buy
+<svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg> </a> </div> </div> <div class="product-device shadow-sm d-none d-md-block"></div> <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div> </div>
+-->
+
+
+<div class="hero-section position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary" style="border-radius: 10px;">
+  <div class="col-md-6 p-lg-5 mx-auto my-5">
+    <h1 class="display-5 fw-bold text-white">Find Your Spot, Instantly</h1>
+<h3 class="fw-normal text-light mb-3">SmartLot helps you locate, book, and manage parking in real-time—saving your time and stress.</h3>
+<div class="d-flex gap-3 justify-content-center lead fw-normal">
+  <a class="icon-link text-white" href="/user_dashboard">Get Started</a>
+  <a class="icon-link text-white" href="#our-services">Explore Services</a>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="row flex-lg-row-reverse align-items-center g-5 py-5" style="border-radius: 10px;">
+    <div class="col-10 col-sm-8 col-lg-6">
+        <img src="../static/parking_car_image.jpeg" class="d-block mx-lg-auto img-fluid" alt="car_image" width="700" height="500" loading="lazy" style="border-radius: 10px;"> </div> <div class="col-lg-6"> <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">SmartLot – Your Smart Parking Companion</h1> 
+            <p class="lead">
+                SmartLot simplifies your parking experience with real-time availability, secure reservations, and instant digital payments. Say goodbye to circling around for spots—SmartLot helps you find and book the nearest available parking space in seconds. Designed for both users and lot owners, it's your all-in-one solution for smarter, faster, and stress-free parking.
+            </p> <div class="d-grid gap-2 d-md-flex justify-content-md-start"> <a href="/user_dashboard"><button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Dashboard</button></a> <a href="/user_lot_dashboard"><button type="button" class="btn btn-outline-secondary btn-lg px-4">Booking</button></a> </div> </div> </div>
+
+
+
+
+<!--
+<div class="container px-4 py-5" id="our-services"> <div><ion-icon size="large" name="settings-outline"></ion-icon></div><h2 class="pb-2 border-bottom"><div></div>Our Services</h2> 
+        -->
+
+<div class="container px-4 py-5" id="our-services"> 
+  <div class="d-flex align-items-center ">
+    <!--<ion-icon size="large"  name="settings-outline"></ion-icon>-->
+    <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-2"> <ion-icon size="large" name="settings-outline"></ion-icon> </div> 
+    <h2 class="pb-2 border-bottom m-0">Our Services</h2>
+  </div>
+
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-3"> <div class="col d-flex align-items-start"> <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3 custom-icon"> <ion-icon size="large" name="location-outline"></ion-icon> </div> <div> <h3 class="fs-2 text-body-emphasis">Real-Time Spot Availability</h3> <p>View live updates of available parking spots in your area. Our smart system ensures you always know where to go, saving time and fuel.</p> <a href="/user_lot_dashboard" class="btn btn-primary">
+Lot Dashboard
+</a> </div> </div> <div class="col d-flex align-items-start"> <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"> <ion-icon size="large" name="id-card-outline"></ion-icon> </div> <div> <h3 class="fs-2 text-body-emphasis">Recent Reservation History</h3> <p>Quickly view your most recent reservations, including location, time, and cost, to keep track of your parking activity with ease.</p> <a href="/user_dashboard" class="btn btn-primary">
+Recent Bookings
+</a> </div> </div> <div class="col d-flex align-items-start"> <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"> <ion-icon size="large" name="stats-chart-outline"></ion-icon> </div> <div> <h3 class="fs-2 text-body-emphasis">Personalized Usage Summary</h3> <p>Monitor your usage through detailed stats like active bookings, past transactions, and total cost — all in one dashboard.</p> <a href="/user_summary" class="btn btn-primary">
+Primary button
+</a> </div> </div> </div> </div>
+
+
+
+
+{% endblock %}
+
+{% block style %}
+<style>
+.hero-section {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+              url('/static/parking-bg.jpeg') no-repeat center center;
+  background-size: cover;
+  z-index: -1;
+}
+
+
+
+
+.icon-square {
+    width: 3rem;
+    height: 3rem;
+    border-radius: .75rem;
+}
+    body {
+        background-color: #F5F5F5;
+    }
+    h1 {
+        margin-top: 64px;
+        text-align: center;
+    }
+</style>
+{% endblock %}
+
+

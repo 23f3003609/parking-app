@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+<h1>Recent Parking History</h1>
+
+{%if not reservation %}
+    <div class="container text-center" style="margin-top: 20px;">
+        <b class="text-center">No reservations found.</b>
+    </div>
+    {% else %}
+<div class="table border" style="max-height:250px;overflow-y: scroll; border-radius: 10px; margin-top: 20px; padding: 20px;">
+    <table class="table table-bordered table-hover" style="border:2px solid black ;">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Spot_id</th>
+                <th scope="col">Location</th>
+                <th scope="col">Vehicle_number</th>
+                <th scope="col">Booked_at</th>
+                <th scope="col" class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for i in reservation %}
+                <tr>
+                    <th scope="row">{{i.reserve.r_id}}</th>
+                        <th scope="row">{{i.reserve.spot_id}}</th>
+                        <td scope="row">{{i.lot.location_name}}</td>
+                        <td scope="row">{{i.reserve.vehicle_number}}</td>
+                        <td scope="row">{{i.reserve.booked_at}}</td>
+                        <td scope="row" class="text-center">
+                            {% if i.reserve.released_at %}
+                                <form method="post" action="/release_spot/{{i.reserve.spot_id}}/{{i.reserve.r_id}}">
+                                    <button type="submit" class="btn btn-success">{{i.reserve.status}}</button>
+                                </form>
+                            {% else %}
+                                <form method="post" action="/release_dashboard/{{i.reserve.r_id}}">
+                                    <button type="submit" class="btn btn-primary">Release</button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+
+
+
+
+{% endblock %}
+
+{% block style %}
+<style>
+    hr{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-top: 5px solid black;
+    }
+    body {
+        background-color: #F5F5F5;
+    }
+    h1 {
+        margin-top: 64px;
+        text-align: center;
+    }
+    .table {
+         width: 100%;
+        table-layout: auto;
+        background-color: #4DA8DA;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .table th, .table td {
+        white-space: nowrap;
+        text-align: left;
+        padding: 8px;
+        background-color: #FFD66B;
+        vertical-align: middle;
+    }
+</style>
+{% endblock %}

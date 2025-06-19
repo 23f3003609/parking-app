@@ -1,0 +1,120 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Delete Lot Dashboard
+
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;width: 100%;width: 100vw;display: flex;justify-content: center;align-items: center;">
+  <div class="card p-4" style="width: 100%; max-width: 560px;border-radius: 10px;">
+<h1 class="my-2">Delete Parking Lot</h1>
+<form class="custom" method="post">
+    <!-- <div class="mb-3">
+    <label for="spot_id" class="form-label">Spot ID:</label>
+    <input id="spot_id" class="form-control" type="text" value="spot_id" readonly>
+  </div>
+
+  <div class="mb-3">
+    <label for="vehicle_no" class="form-label">Vehicle Number:</label>
+    <input id="vehicle_no" class="form-control" type="text" value="vehicle_number" readonly>
+  </div>
+
+  <div class="mb-3">
+    <label for="start" class="form-label">Booked At:</label>
+    <input id="start" class="form-control" type="text" value="booked_at" readonly>
+  </div>
+
+  <div class="mb-3">
+    <label for="release" class="form-label">Released At:</label>
+    <input id="release" class="form-control" type="text" value="released_at" readonly>
+  </div>
+
+  <div class="mb-4">
+    <label for="tcost" class="form-label">Total Cost:</label>
+    <input id="tcost" class="form-control" type="text" value="total_cost" readonly>
+  </div> -->
+  {% for i in lot%}
+    <div class="row mb-3">
+  <label for="lot_id" class="col-sm-5 col-form-label text-end text-end">Lot Id:</label>
+  <div class="col-sm-6">
+    <input id="lot_id" class="form-control" type="text" value="{{i.lot_id}}" required aria-label="readonly input example" readonly>
+  </div>
+</div>
+        <div class="row mb-3">
+  <label for="address" class="col-sm-5 col-form-label text-end">Address:</label>
+  <div class="col-sm-6">
+    <input id="address" class="form-control" name="address" required value="{{i.address}}" aria-label="readonly input example" readonly>
+  </div>
+</div>
+
+        <div class="row mb-3">
+        <label for="pincode" class="col-sm-5 col-form-label text-end">Pincode :</label>
+        <div class="col-sm-7">
+                <input id="pincode" class="form-control" type="number" value="{{i.pincode}}" aria-label="readonly input example" readonly  name="pincode" required>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+  <label for="price_per_hour" class="col-sm-5 col-form-label text-end text-end">Price (per Hour):</label>
+  <div class="col-sm-6">
+    <input id="price_per_hour" class="form-control" type="number" value="{{i.price_per_hour}}" aria-label="readonly input example" readonly value="price_per_hour" name="price_per_hour" required>
+  </div>
+</div>
+   <div class="row mb-3">
+  <label for="max_spots" class="col-sm-5 col-form-label text-end text-end">Total Spots:</label>
+  <div class="col-sm-6">
+    <input id="max_spots" class="form-control" type="number" value="{{i.max_spots}}" aria-label="readonly input example" readonly name="max_spots" required>
+  </div>
+</div>
+<div class="row mb-3">
+  <label for="max_spots" class="col-sm-5 col-form-label text-end text-end">Available Spots:</label>
+  <div class="col-sm-6">
+    <input id="max_spots" class="form-control" type="number" value="{{available_spots}}" aria-label="readonly input example" readonly name="max_spots" required>
+  </div>
+</div>
+<div class="row mb-3">
+  <label for="max_spots" class="col-sm-5 col-form-label text-end text-end">Occupied Spots:</label>
+  <div class="col-sm-6">
+    <input id="max_spots" class="form-control" type="number" value="{{occupied_spots}}"  aria-label="readonly input example" readonly name="max_spots" required>
+  </div>
+</div>
+{%endfor%}
+        <div>
+    <button type="submit" name="action" value="delete" class="btn btn-success mx-3">Delete</button>
+  <button type="submit" name="action" value="cancel" class="btn btn-secondary">Cancel</button>
+  </div>
+</form>
+  </div>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    .container {
+        background-color: #4DA8DA;
+        border-radius: 10px;
+    }
+
+.custom input{
+  width: 100%;
+  
+}
+
+    .custom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        background-color: #FFD66B;
+    }
+  
+
+    h1 {
+        margin-top: 10px;
+        text-align: center;
+    }
+    
+</style>
+{% endblock %}

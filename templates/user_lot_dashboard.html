@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Lot Dashboard
+{% endblock %}
+{% block content %}
+<h1>Available Parking Lots</h1>
+
+<div class="table border" style="max-height:300px;overflow-y: scroll; border-radius: 10px; margin-top: 20px; padding: 20px;">
+    <table class="table table-bordered table-hover" style="border:2px solid black ;">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Adress</th>
+                <th scope="col">Total</th>
+                <th scope="col">Availability</th>
+                <th scope="col">Cost Per Hour</th>
+                <th scope="col" class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for i in lots %}
+                <tr>
+                    <th scope="row">{{i.lot.lot_id}}</th>
+                        <th scope="row">{{i.lot.location_name}}, {{i.lot.address}}, {{i.lot.pincode}}</th>
+                        <td scope="row">{{i.lot.max_spots}}</td>
+                        <td scope="row">{{i.available_spots}}</td>
+                        <td scope="row">{{i.lot.price_per_hour}}</td>
+                        <td scope="row" class="text-center">
+                            {%if i.available_spots<1%}
+                                <span class="text-danger">No Spots Available</span>
+                            {% else %}
+                                <form method="post" action="/booking_dashboard/{{i.lot.lot_id}}">
+                                    <button type="submit" class="btn btn-primary">BOOK</button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    hr{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-top: 5px solid black;
+    }
+    body {
+        background-color: #F5F5F5;
+    }
+    h1 {
+        margin-top: 64px;
+        text-align: center;
+    }
+    .table {
+         width: 100%;
+        table-layout: auto;
+        background-color: #4DA8DA;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .table th, .table td {
+        white-space: nowrap;
+        text-align: left;
+        padding: 8px;
+        background-color: #FFD66B;
+        vertical-align: middle;
+    }
+</style>
+{% endblock %}
