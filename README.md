@@ -1,4 +1,4 @@
-**SmartLot 🚗**
+## SmartLot 🚗
 
 SmartLot is a smart parking management web application built with **Flask** and **SQLite**.  
 It helps admins manage parking lots, spots, reservations and provides a user-friendly portal for booking and releasing parking spots.
