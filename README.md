@@ -1,4 +1,4 @@
-# SmartLot 🚗
+**SmartLot 🚗**
 
 SmartLot is a smart parking management web application built with **Flask** and **SQLite**.  
 It helps admins manage parking lots, spots, reservations and provides a user-friendly portal for booking and releasing parking spots.
@@ -64,7 +64,7 @@ It helps admins manage parking lots, spots, reservations and provides a user-fri
   ```
 ---
 
-## 🛠️ Tech Stack
+**🛠️ Tech Stack**
 
 - **Backend:** Flask (Python)
 - **Database:** SQLite3
@@ -74,27 +74,27 @@ It helps admins manage parking lots, spots, reservations and provides a user-fri
 
 ---
 
-## ⚙️ Setup & Run
+**⚙️ Setup & Run**
 
 Follow these steps to run **SmartLot** locally:
 
-# 1️⃣ Create a virtual environment
+**1️⃣ Create a virtual environment**
 ```bash
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-# 2️⃣ Install dependencies
+**2️⃣ Install dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-# 3️⃣ (Optional) Freeze dependencies
+**3️⃣ (Optional) Freeze dependencies**
 ```bash
 pip freeze > requirements.txt
 ```
 
-# 4️⃣ Run the app
+**4️⃣ Run the app**
 ```
 python3 app.py
 ```
