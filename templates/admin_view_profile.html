@@ -1,28 +1,35 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-Admin Profile Update
+Admin View Profile
 {% endblock %}
 
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;width: 100%;width: 100vw;display: flex;justify-content: center;align-items: center;">
   <div class="card p-4" style="width: 100%; max-width: 560px;border-radius: 10px;">
-<h1 class="my-2">Admin Profile Update</h1>
-<form method="post" class="custom">
-     <div class="mb-3">
-    <label for="username" class="form-label">Username</label>
-    <input id="username" class="form-control" type="text" value="{{user.username}}" readonly>
-  </div>
+    <h1 class="my-2">Admin Profile Update</h1>
+    <form method="post" class="custom">
+      
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input id="username" class="form-control" type="text" value="{{user.username}}" readonly>
+      </div>
 
-  <div class="mb-3">
-    <label for="email" class="form-label">Email</label>
-    <input id="email" class="form-control" type="text" value="{{user.email}}" readonly>
-  </div>
-<div>
-    <a href="/admin_profile_update"><button type="submit" name="action" value="update" class="btn btn-primary">Update</button></a>
-  <a href="/admin"><button type="submit" name="action" value="cancel" class="btn btn-secondary">Back</button>
-  </div>
-</form>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input id="email" class="form-control" type="text" value="{{user.email}}" readonly>
+      </div>
+      
+      <div class="mb-3">
+        <label for="p_no" class="form-label">Phone Number</label>
+        <input id="p_no" class="form-control" type="text" value="{{user.phone_number}}" readonly>
+      </div>
+
+      <div class="col-md-5">
+        <a href="/admin_profile_update"><button type="submit" name="action" value="update" class="btn btn-primary mx-2">Update</button></a>
+        <a href="/admin"><button type="submit" name="action" value="cancel" class="btn btn-secondary mx-2">Back</button>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -30,30 +37,31 @@ Admin Profile Update
 
 {% block style %}
 <style>
-    .container {
-        background-color: #4DA8DA;
-        border-radius: 10px;
-    }
+.container {
+  background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+  border-radius: 10px;
+}
+.card {
+  background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+  backdrop-filter: blur(2px);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0.2);
+}
 
 .custom input{
   width: 100%;
-  
 }
-
-    .custom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-        
-    .card {
-        background-color: #FFD66B;
-    }
-  
-    h1 {
-        margin-top: 10px;
-        text-align: center;
-    }
+.custom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  margin-top: 10px;
+  text-align: center;
+}
+    
     
 </style>
 {% endblock %}

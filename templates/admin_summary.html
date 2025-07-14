@@ -1,0 +1,112 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Summary Dashboard
+{% endblock %}
+{% block content %}
+<h1>Summary</h1>
+<hr>
+
+<div class="row text-center">
+    <div class="col-md-3">
+        <div class="card bg-light mb-3">
+            <div class="card-header">Total Users</div>
+            <div class="card-body"><h4>{{total_users}}</h4></div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-light mb-3">
+            <div class="card-header">Total Lots</div>
+            <div class="card-body"><h4>{{total_lots}}</h4></div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-light mb-3">
+            <div class="card-header">Total Spots</div>
+            <div class="card-body"><h4>{{total_spots}}</h4></div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-light mb-3">
+            <div class="card-header">Total Completed Reservations</div>
+            <div class="card-body"><h4>{{total_completed_reservations}}</h4></div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-light mb-3">
+            <div class="card-header">Total Ongoing Reservations</div>
+            <div class="card-body"><h4>{{total_ongoing_reservations}}</h4></div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-light mb-3">
+            <div class="card-header">Total Revenue Generated</div>
+            <div class="card-body"><h4>{{ total_cost | round(2) }}</h4></div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row justify-content-center align-items-start">
+        <div class="col-md-6 text-center">
+            <h4 class="mb-4">Revenue Pie Chart</h4>
+            <img src="/static/lot_revenue_chart.png" alt="Revenue Pie Chart" class="img-fluid" style="max-width: 80%;">
+        </div>
+        <div class="col-md-6 text-center">
+            <h4 class="mb-4">Bar Chart</h4>
+            <img src="/static/spot_status_chart.png" alt="Spot Status Bar Chart" class="img-fluid" style="max-width: 80%;">
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block style %}
+<style>
+    .card-header{
+        border-radius: 10px;
+        background-color: #4DA8DA;
+    }
+    .card{
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+    }
+    .card:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+        background-color: #ffffff;
+}
+    hr{
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border-top: 5px solid black;
+    }
+    body {
+        background-color: #F5F5F5;
+    }
+    h1 {
+        margin-top: 30px;
+        text-align: center;
+    }
+    .table {
+         width: 100%;
+        table-layout: auto;
+        background-color: #4DA8DA;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .table th, .table td {
+        white-space: nowrap;
+        text-align: left;
+        padding: 8px;
+        background-color: #FFD66B;
+        vertical-align: middle;
+    }
+</style>
+{% endblock %}

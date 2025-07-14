@@ -16,10 +16,13 @@ Home
         <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Spot_id</th>
+                <th scope="col">Spot id</th>
                 <th scope="col">Location</th>
-                <th scope="col">Vehicle_number</th>
-                <th scope="col">Booked_at</th>
+                <th scope="col">Vehicle Number</th>
+                <th scope="col">Booked at</th>
+                <th scope="col">Released at</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Cost</th>
                 <th scope="col" class="text-center">Action</th>
             </tr>
         </thead>
@@ -31,6 +34,16 @@ Home
                         <td scope="row">{{i.lot.location_name}}</td>
                         <td scope="row">{{i.reserve.vehicle_number}}</td>
                         <td scope="row">{{i.reserve.booked_at}}</td>
+                        <td>{{ i.reserve.released_at if i.reserve.released_at else 'Ongoing' }}</td>
+                        <td>
+                            {% if i.duration %}
+                                {{ i.duration }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td>{{ i.reserve.total_cost if i.reserve.total_cost else '-' }}</td>
+                        <!--<td class="text-center">{{ i.reserve.status }}</td>-->
                         <td scope="row" class="text-center">
                             {% if i.reserve.released_at %}
                                 <form method="post" action="/release_spot/{{i.reserve.spot_id}}/{{i.reserve.r_id}}">
@@ -50,55 +63,11 @@ Home
     {% endif %}
 </div> 
 <hr>
+
 <div class="container text-center">
     <h2>Want to book a new Spot</h2>
+    <a  href="/user_lot_dashboard" class="btn btn-primary">Book</a>
 </div>
-<div class="table border container" style="max-height:250px;overflow-y: scroll; border-radius: 10px; margin-top: 20px; padding: 20px;">
-    <table class="table table-bordered table-hover" style="border:2px solid black ;">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Adress</th>
-                <th scope="col">Total</th>
-                <th scope="col">Availablilty</th>
-                <th scope="col">Cost Per Hour</th>
-                <th scope="col" class="text-center">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {%for i in lot_data %}
-                <tr>
-                    <th scope="row">{{i.lot.lot_id}}</th>
-                        <th scope="row">{{i.lot.location_name}}, {{i.lot.address}}, {{i.lot.pincode}}</th>
-                        <td scope="row">{{i.lot.max_spots}}</td>
-                        <td scope="row">{{i.available_spots}}</td>
-                        <td scope="row">{{i.lot.price_per_hour}}</td>
-                        <td scope="row" class="text-center">
-                            {%if i.available_spots<1%}
-                                <span class="text-danger">No Spots Available</span>
-                            {% else %}
-                                <form method="post" action="/booking_dashboard/{{i.lot.lot_id}}">
-                                    <button type="submit" class="btn btn-primary">BOOK</button>
-                                </form>
-                            {% endif %}
-                        </td>
-                    </th>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-
-
-
-
-
-
 
 {% endblock %}
 

@@ -7,22 +7,53 @@ User Profile
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;width: 100%;width: 100vw;display: flex;justify-content: center;align-items: center;">
   <div class="card p-4" style="width: 100%; max-width: 560px;border-radius: 10px;">
-<h1 class="my-2">User Profile Details</h1>
-<form method="post" class="custom">
-     <div class="mb-3">
-    <label for="username" class="form-label">Username</label>
-    <input id="username" class="form-control" type="text" value="{{user.username}}" readonly>
-  </div>
+    <h1 class="my-2">User Profile Details</h1>
 
-  <div class="mb-3">
-    <label for="email" class="form-label">Email</label>
-    <input id="email" class="form-control" type="text" value="{{user.email}}" readonly>
-  </div>
-<div>
-    <a href="/profile_update"><button type="submit" name="action" value="update" class="btn btn-primary">Update</button></a>
-  <a href="/user_dashboard"><button type="submit" name="action" value="cancel" class="btn btn-secondary">Back</button>
-  </div>
-</form>
+    <form method="post" class="custom">
+      
+      <div class="row mb-3">
+        <label for="username" class="col-sm-4 col-form-label text-end">Username:</label>
+        <div class="col-sm-7">
+          <input id="username" class="form-control" type="text" value="{{user.username}}" aria-label="readonly input example" readonly>
+        </div>
+      </div>
+
+  
+      <div class="row mb-3">
+        <label for="email" class="col-sm-4 col-form-label text-end">Email:</label>
+        <div class="col-sm-7">
+          <input id="email" class="form-control" type="text" value="{{user.email}}" aria-label="readonly input example" readonly>
+        </div>
+      </div>
+    
+      <div class="row mb-3">
+        <label for="address" class="col-sm-4 col-form-label text-end">Address:</label>
+        <div class="col-sm-7">
+          <input id="address" class="form-control" type="text" value="{{user.address}}" aria-label="readonly input example" readonly>
+        </div>
+      </div>
+
+
+      <div class="row mb-3">
+        <label for="pincode" class="col-sm-4 col-form-label text-end">Pincode:</label>
+        <div class="col-sm-7">
+          <input id="pincode" class="form-control" type="text" value="{{user.pincode}}" aria-label="readonly input example" readonly>
+        </div>
+      </div>
+
+
+      <div class="row mb-3">
+        <label for="p_no" class="col-sm-4 col-form-label text-end">Phone Number:</label>
+        <div class="col-sm-7 mt-2">
+          <input id="p_no" class="form-control" type="text" value="{{user.phone_number}}" aria-label="readonly input example" readonly>
+        </div>
+      </div>
+
+      <div>
+        <a href="/profile_update"><button type="submit" name="action" value="update" class="btn btn-primary">Update</button></a>
+        <a href="/user_dashboard"><button type="submit" name="action" value="cancel" class="btn btn-secondary">Back</button>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -30,30 +61,30 @@ User Profile
 
 {% block style %}
 <style>
-    .container {
-        background-color: #4DA8DA;
-        border-radius: 10px;
-    }
-
-.custom input{
-  width: 100%;
-  
-}
-
-    .custom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-        
-    .card {
-        background-color: #FFD66B;
-    }
-  
-    h1 {
-        margin-top: 10px;
-        text-align: center;
-    }
+  .container {
+    background-image: url('/static/editt.jpeg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+  }
+  .card {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(2px);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0.2);
+  }
+  .custom input{
+    width: 100%;
+  }
+  .custom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1 {
+    margin-top: 10px;
+    text-align: center;
+  }
     
 </style>
 {% endblock %}

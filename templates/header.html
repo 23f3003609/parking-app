@@ -1,16 +1,11 @@
 <nav class="py-2 bg-body-tertiary border-bottom">
     <div class="container-fluid d-flex flex-wrap">
         <ion-icon  name="car-sport-outline" size="large"></ion-icon>
-        <a class="navbar-brand mt-2" href="#"><strong class="mt-5">SmartLot</strong></a>
+        <a class="navbar-brand mt-2" href="/"><strong class="mt-5">SmartLot</strong></a>
         <ul class="nav me-auto">
             {%if user%}
-                {%if user.type=='admin'%}
-                    <!-- <li class="nav-item">
-                        <h2 class="nav-link active">Welcome {{user.type}}</h2>
-                    </li> -->
-                    
+                {%if user.type=='admin'%} 
                     <li class="nav-item">
-                        
                         <a href="/admin" class="nav-link link-body-emphasis px-2 active" aria-current="page">
                             Home
                         </a>
@@ -21,21 +16,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link link-body-emphasis px-2">
+                        <a href="/admin_summary" class="nav-link link-body-emphasis px-2">
                             Summary
                         </a>
                     </li>
         </ul>
-                    <!-- <li class="nav-item">
-                        <a href="#" class="nav-link link-body-emphasis px-2">
-                            FAQs
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link link-body-emphasis px-2">
-                            About
-                        </a>
-                    </li> -->
+
         <ul class="nav">
             <li class="nav-item">
                 <a href="/admin_view_profile" class="nav-link link-body-emphasis px-2">
@@ -53,36 +39,34 @@
             </li>
         </ul>
         {%else%}
-            <!-- <li class="nav-item">
-                        <h4 style="margin-top:3px;padding-left:2px">Welcome {{user.username}}</h4>
-                    </li> -->
-                    <li class="nav-item">
-                        <a href="/" class="nav-link link-body-emphasis px-2 active" aria-current="page">
-                            Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/user_dashboard" class="nav-link link-body-emphasis px-2 active" aria-current="page">
-                            Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/user_lot_dashboard" class="nav-link link-body-emphasis px-2">
-                            Booking
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/user_summary" class="nav-link link-body-emphasis px-2">
-                            Summary
-                        </a>
-                    </li>
+            <li class="nav-item">
+                <a href="/" class="nav-link link-body-emphasis px-2 active" aria-current="page">
+                    Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/user_dashboard" class="nav-link link-body-emphasis px-2 active" aria-current="page">
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/user_lot_dashboard" class="nav-link link-body-emphasis px-2">
+                    Booking
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/user_summary" class="nav-link link-body-emphasis px-2">
+                    Summary
+                </a>
+            </li>
         </ul>
-            <ul class="nav">
-                <li class="nav-item">
+        <ul class="nav">
+            <li class="nav-item">
                 <a href="/view_profile" class="nav-link link-body-emphasis px-2">
                     View Profile
                 </a>
-                <li class="nav-item">
+            </li>
+            <li class="nav-item">
                 <a href="/profile_update" class="nav-link link-body-emphasis px-2">
                     Edit Profile
                 </a>
@@ -94,7 +78,7 @@
             </li>
         </ul>
         {%endif%}
-            {%else%}
+        {%else%}
         <ul class="nav">
             <li class="nav-item">
                 <a href="/login" class="nav-link link-body-emphasis px-2">
@@ -112,59 +96,44 @@
 </nav>
 {%if user%}
 <header class="py-3 mb-4 border-bottom">
-    <div class="container d-flex flex-wrap justify-content-center" style="margin-left: 40px;background-color: #F5F5F5 !important;">
+    <div class="container d-flex flex-wrap justify-content-center" style="margin-left: 40px;background: #F5F5F5 !important;">
+        {%if user.type == 'admin'%}
         <a href="/admin" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
             <ion-icon name="person-outline" size="large">
                 <use xlink:href="#bootstrap"></use></ion-icon>
-                
-                    {%if user.type == 'admin'%}
-                        <span class="fs-4 mt-2">Welcome {{user.type}}</span>
-                        </a>
+                <span class="fs-4 mt-2">Welcome {{user.type}}</span>
+        </a>
         <ion-icon size="large" style="margin-top:5px;padding-right:5px" name="search-circle-outline"></ion-icon>
-                        <form class="d-flex" action="/admin_search_results">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
-                            <select class="form-select me-2" aria-label="Default select example" name="key">
-                                <option selected>Select to Search</option>
-                                <option value="user_id">User Id</option>
-                                <option value="username">User Name</option>
-                                <option value="lot_location">Location</option>
-                            </select>
-                            <input class="btn btn-outline-success" type="submit" value="Search">
-                        </form>
-       <!-- <form class="d-flex" action="#">
-                            <input class="form-control me-2" type="search" placeholder="Search Lots" aria-label="Search" name="search">
-                            # <select class="form-select me-2" aria-label="Default select example" name="key">
-                                <option selected>select to search</option>
-                                <option value="user">User</option>
-                                <option value="card">Card</option>
-                            </select> #
-                            <div>
-                            <input class="btn btn-outline-success" type="submit" value="Search">
-                        </form>-->
-                        </div>
-                    {%else%}
-                        <span class="fs-4 mt-2">Welcome {{user.username}}</span>
-                    
-                
+        <form class="d-flex" action="/admin_search_results">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search"/>
+            <select class="form-select me-2" aria-label="Default select example" name="key">
+                <option selected>Select to Search</option>
+                <option value="user_id">User Id</option>
+                <option value="username">User Name</option>
+                <option value="lot_location">Location</option>
+            </select>
+            <input class="btn btn-outline-success" type="submit" value="Search">
+        </form>
+    </div>
+    {%else%}
+        <a href="/user_dashboard" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+            <ion-icon name="person-outline" size="large">
+            <use xlink:href="#bootstrap"></use></ion-icon>
+            <span class="fs-4 mt-2">Welcome {{user.username}}</span>    
         </a>
         <ion-icon size="large" style="margin-top:5px;padding-right:5px" name="search-circle-outline"></ion-icon>
 
         <form class="d-flex" action="/search_results">
-                            <input class="form-control me-2" type="search" placeholder="Search Lots" aria-label="Search" name="search">
-                            <!-- <select class="form-select me-2" aria-label="Default select example" name="key">
-                                <option selected>select to search</option>
-                                <option value="user">User</option>
-                                <option value="card">Card</option>
-                            </select> -->
-                            <div>
-                            <input class="btn btn-outline-success" type="submit" value="Search">
-                        </form>
-        <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-            <input class="btn btn-outline-success" type="submit" value="Search">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-            
-        </form> -->
-    </div>
+            <input class="form-control me-2" type="search" placeholder="Search Lots by Location" aria-label="Search" name="search">
+                <!-- <select class="form-select me-2" aria-label="Default select example" name="key">
+                    <option selected>select to search</option>
+                    <option value="lot_id">Lot Id</option>
+                    <option value="pincode">pincode</option>
+                </select> -->
+            <div>
+                <input class="btn btn-outline-success mt-1" type="submit" value="Search">
+            </div>
+        </form>
     {%endif%}
 </header>
 {%endif%}

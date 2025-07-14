@@ -23,7 +23,7 @@ Lot Search Results
                 <tr>
                     <th scope="row">{{i.lot_id}}</th>
                         <th scope="row">{{i.location_name}}, {{i.address}}, {{i.pincode}}</th>
-                        <td scope="row">{{i.max_spots}}</td>
+                        <td scope="row">{{active_spots[i.lot_id]}}</td>
                         <td scope="row">{{available_spots.get(i.lot_id, 0)}}</td>
                         <td scope="row">{{i.price_per_hour}}</td>
                         <td scope="row" class="text-center">

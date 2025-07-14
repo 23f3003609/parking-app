@@ -4,7 +4,7 @@ app=None
 
 from application.config import Config
 from application.database import db
-
+    
 
 def create_app():
     app= Flask(__name__)

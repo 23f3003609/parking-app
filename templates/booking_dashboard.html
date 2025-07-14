@@ -8,91 +8,73 @@ Spot Booking Dashboard
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;width: 100%;width: 100vw;display: flex;justify-content: center;align-items: center;">
   <div class="card p-4" style="width: 100%; max-width: 560px;border-radius: 10px;">
-<h1 class="my-2">Book the Parking Spot</h1>
-<form class="custom" method="post" action="/book_spot/{{user_id.user_id}}/{{spot_id.spot_id}}/{{spot_id.lot_id}}">
-    <!-- <div class="mb-3">
-    <label for="spot_id" class="form-label">Spot ID:</label>
-    <input id="spot_id" class="form-control" type="text" value="spot_id" readonly>
-  </div>
-
-  <div class="mb-3">
-    <label for="vehicle_no" class="form-label">Vehicle Number:</label>
-    <input id="vehicle_no" class="form-control" type="text" value="vehicle_number" readonly>
-  </div>
-
-  <div class="mb-3">
-    <label for="start" class="form-label">Booked At:</label>
-    <input id="start" class="form-control" type="text" value="booked_at" readonly>
-  </div>
-
-  <div class="mb-3">
-    <label for="release" class="form-label">Released At:</label>
-    <input id="release" class="form-control" type="text" value="released_at" readonly>
-  </div>
-
-  <div class="mb-4">
-    <label for="tcost" class="form-label">Total Cost:</label>
-    <input id="tcost" class="form-control" type="text" value="total_cost" readonly>
-  </div> -->
-    <div class="row mb-3">
-  <label for="spot_id" class="col-sm-4 col-form-label text-end">Spot ID:</label>
-  <div class="col-sm-7">
-    <input id="spot_id" class="form-control" type="text" value="{{spot_id.spot_id}}" aria-label="readonly input example" readonly>
-  </div>
-</div>
-        <div class="row mb-3">
-        <label for="lot_id" class="col-sm-4 col-form-label text-end">Lot_id:</label>
+    <h1 class="my-2">Book the Parking Spot</h1>
+    <form class="custom" method="post" action="/book_spot/{{user.user_id}}/{{spot_id.spot_id}}/{{spot_id.lot_id}}">
+      
+      <div class="row mb-3">
+        <label for="spot_id" class="col-sm-4 col-form-label text-end">Spot ID:</label>
         <div class="col-sm-7">
-                <input id="lot_id" class="form-control" type="text" value="{{spot_id.lot_id}}" aria-label="readonly input example" readonly>
-            </div>
+          <input id="spot_id" class="form-control" type="text" value="{{spot_id.spot_id}}" aria-label="readonly input example" readonly>
         </div>
-        <div class="row mb-3">
-        <label for="user_id" class="col-sm-4 col-form-label text-end">User_id :</label>
+      </div>
+          
+      <div class="row mb-3">
+        <label for="lot_id" class="col-sm-4 col-form-label text-end">Lot ID:</label>
         <div class="col-sm-7">
-                <input id="user_id" class="form-control" type="text" value="{{user_id.user_id}}" aria-label="readonly input example" readonly>
-            </div>
+          <input id="lot_id" class="form-control" type="text" value="{{spot_id.lot_id}}" aria-label="readonly input example" readonly>
         </div>
-        <div class="row mb-3">
-        <label for="vehicle_no" class="col-sm-5 col-form-label text-end">vehicle_number:</label>
+      </div>
+          
+      <div class="row mb-3">
+        <label for="user_id" class="col-sm-4 col-form-label text-end">User ID :</label>
         <div class="col-sm-7">
-                <input id="vehicle_no" class="form-control" type="text" name="vehicle_number">
-            </div>
+          <input id="user_id" class="form-control" type="text" value="{{user.user_id}}" aria-label="readonly input example" readonly>
         </div>
-        <div>
-    <button type="submit" name="action" value="reserve" class="btn btn-success mx-3">Reserve</button>
-  <button type="submit" name="action" value="cancel" class="btn btn-secondary">Cancel</button>
-  </div>
-</form>
+      </div>
+          
+      <div class="row mb-3">
+        <label for="vehicle_no" class="col-sm-5 col-form-label text-end">Vehicle Number:</label>
+        <div class="col-sm-7">
+          <input id="vehicle_no" class="form-control" type="text" name="vehicle_number">
+        </div>
+      </div>
+          
+      <div>
+        <button type="submit" name="action" value="reserve" class="btn btn-success mx-3">Reserve</button>
+        <button type="submit" name="action" value="cancel" class="btn btn-secondary">Cancel</button>
+      </div>
+    </form>
   </div>
 </div>
 {% endblock %}
 
 {% block style %}
 <style>
-    .container {
-        background-color: #4DA8DA;
-        border-radius: 10px;
-    }
 
+.container {
+  background-image: url('/static/booking_bg.jpeg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+.card {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0.2);
+}
 .custom input{
   width: 100%;
-  
 }
-
-    .custom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .card {
-        background-color: #FFD66B;
-    }
-  
-
-    h1 {
-        margin-top: 10px;
-        text-align: center;
-    }
+.custom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  margin-top: 10px;
+  text-align: center;
+}
     
 </style>
 {% endblock %}

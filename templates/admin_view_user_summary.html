@@ -1,0 +1,135 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+User Summary
+{% endblock %}
+{% block content %}
+<h1>Parking history @{{user_id.username}}</h1>
+<hr>
+
+
+<div class="table border" style="overflow-x:auto; border-radius: 10px; margin-top: 20px; padding: 20px;">
+    <table class="table table-bordered table-hover" style="border:2px solid black ;">
+        <thead>
+            <tr>
+                <th scope="col">Parking Lot</th>
+                <th scope="col">Spot ID</th>
+                <th scope="col">Vehicle Number</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Time</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Amount</th>
+                <th scope="col" class="text-center">Status</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+{% for item in enriched_reservations %}
+    <tr>
+        <td>{{ item.lot_name }}</td>
+        <td>{{ item.reservation.spot_id }}</td>
+        <td>{{ item.reservation.vehicle_number }}</td>
+        <td>{{ item.reservation.booked_at }}</td>
+        <td>{{ item.reservation.released_at if item.reservation.released_at else 'Ongoing' }}</td>
+        <td>
+            {% if item.duration %}
+                {{ item.duration }}
+            {% else %}
+                -
+            {% endif %}
+        </td>
+        <td>{{ item.reservation.total_cost if item.reservation.total_cost else '-' }}</td>
+        <td class="text-center">{{ item.reservation.status }}</td>
+    </tr>
+{% endfor %}
+</tbody>
+    </table>
+</div>
+
+<h2 class="text-center my-4">User Reservation Summary</h2>
+<hr>
+
+<div class="row text-center">
+
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title">Total Reservations</h5>
+                <p class="display-6 fw-bold text-primary">{{ total_count }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title">Ongoing Reservations</h5>
+                <p class="display-6 fw-bold text-warning">{{ ongoing_count }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title">Completed Reservations</h5>
+                <p class="display-6 fw-bold text-success">{{ completed_count }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row-md-4 mb-3 justify-center">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title">Total Amount Spent</h5>
+                <p class="display-6 fw-bold text-info">₹{{ total_cost }}</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}
+
+{% block style %}
+<style>
+    .card{
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+    }
+    .card:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+        background-color:rgb(209, 240, 125);
+    }
+    hr{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-top: 5px solid black;
+    }
+    body {
+        background-color: #F5F5F5;
+    }
+    h1 {
+        margin-top: 64px;
+        text-align: center;
+    }
+    .table {
+         width: 100%;
+        table-layout: auto;
+        background-color: #4DA8DA;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .table th, .table td {
+        white-space: nowrap;
+        text-align: left;
+        padding: 8px;
+        background-color: #FFD66B;
+        vertical-align: middle;
+    }
+</style>
+{% endblock %}

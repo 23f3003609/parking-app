@@ -4,6 +4,7 @@
 Lot Dashboard
 {% endblock %}
 {% block content %}
+{%if lots%}
 <h1>Available Parking Lots</h1>
 
 <div class="table border" style="max-height:300px;overflow-y: scroll; border-radius: 10px; margin-top: 20px; padding: 20px;">
@@ -23,7 +24,7 @@ Lot Dashboard
                 <tr>
                     <th scope="row">{{i.lot.lot_id}}</th>
                         <th scope="row">{{i.lot.location_name}}, {{i.lot.address}}, {{i.lot.pincode}}</th>
-                        <td scope="row">{{i.lot.max_spots}}</td>
+                        <td scope="row">{{i.active_spots}}</td>
                         <td scope="row">{{i.available_spots}}</td>
                         <td scope="row">{{i.lot.price_per_hour}}</td>
                         <td scope="row" class="text-center">
@@ -41,6 +42,13 @@ Lot Dashboard
         </tbody>
     </table>
 </div>
+{%else%}
+<div class="container text-center" style="margin-top: 20px;">
+        <h2 class="text-center">No Lots found.</h2>
+        <hr style ="border:2px solid black">
+
+    </div>
+{%endif%}
 {% endblock %}
 
 {% block style %}

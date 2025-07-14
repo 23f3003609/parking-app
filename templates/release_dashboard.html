@@ -7,99 +7,89 @@ Release Dashboard
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;width: 100%;width: 100vw;display: flex;justify-content: center;align-items: center;">
   <div class="card p-4" style="width: 100%; max-width: 560px;border-radius: 10px;">
-<h1 class="my-2">Release the Parking Spot</h1>
-<form class="custom" method="post">
-    <!-- <div class="mb-3">
-    <label for="spot_id" class="form-label">Spot ID:</label>
-    <input id="spot_id" class="form-control" type="text" value="spot_id" readonly>
-  </div>
+    <h1 class="my-2">Release the Parking Spot</h1>
 
-  <div class="mb-3">
-    <label for="vehicle_no" class="form-label">Vehicle Number:</label>
-    <input id="vehicle_no" class="form-control" type="text" value="vehicle_number" readonly>
-  </div>
-
-  <div class="mb-3">
-    <label for="start" class="form-label">Booked At:</label>
-    <input id="start" class="form-control" type="text" value="booked_at" readonly>
-  </div>
-
-  <div class="mb-3">
-    <label for="release" class="form-label">Released At:</label>
-    <input id="release" class="form-control" type="text" value="released_at" readonly>
-  </div>
-
-  <div class="mb-4">
-    <label for="tcost" class="form-label">Total Cost:</label>
-    <input id="tcost" class="form-control" type="text" value="total_cost" readonly>
-  </div> -->
-    <div class="row mb-3">
-  <label for="spot_id" class="col-sm-4 col-form-label text-end">Spot ID:</label>
-  <div class="col-sm-7">
-    <input id="spot_id" class="form-control" type="text" value="{{r_id.spot_id}}" aria-label="readonly input example" readonly>
-  </div>
-</div>
-        <div class="row mb-3">
+    <form class="custom" method="post">
+    
+      <div class="row mb-3">
+        <label for="spot_id" class="col-sm-4 col-form-label text-end">Spot ID:</label>
+        <div class="col-sm-7">
+          <input id="spot_id" class="form-control" type="text" value="{{r_id.spot_id}}" aria-label="readonly input example" readonly>
+        </div>
+      </div>
+        
+      <div class="row mb-3">
         <label for="vehicle_no" class="col-sm-5 col-form-label text-end">Vehicle Number:</label>
         <div class="col-sm-7">
-                <input id="vehicle_no" class="form-control" type="text" value="{{r_id.vehicle_number}}" aria-label="readonly input example" readonly>
-            </div>
+          <input id="vehicle_no" class="form-control" type="text" value="{{r_id.vehicle_number}}" aria-label="readonly input example" readonly>
         </div>
-        <div class="row mb-3">
+      </div>
+        
+      <div class="row mb-3">
         <label for="start" class="col-sm-4 col-form-label text-end">Booked At:</label>
         <div class="col-sm-7">
-                <input id="start" class="form-control" type="text" value="{{ r_id.booked_at.strftime('%Y-%m-%d %H:%M:%S') }}" aria-label="readonly input example" readonly>
-            </div>
+          <input id="start" class="form-control" type="text" value="{{ r_id.booked_at.strftime('%Y-%m-%d %H:%M:%S') }}" aria-label="readonly input example" readonly>
         </div>
-        <div class="row mb-3">
+      </div>
+        
+      <div class="row mb-3">
         <label for="release" class="col-sm-4 col-form-label text-end">Released At:</label>
         <div class="col-sm-7">
-                <input id="release" class="form-control" type="text" value="{{released_at.strftime('%Y-%m-%d %H:%M:%S') }}" aria-label="readonly input example" readonly>
-            </div>
+          <input id="release" class="form-control" type="text" value="{{released_at.strftime('%Y-%m-%d %H:%M:%S') }}" aria-label="readonly input example" readonly>
         </div>
-        <div class="row mb-4">
+      </div>
+        
+      <div class="row mb-4">
         <label for="tcost" class="col-sm-4 col-form-label text-end">Total Cost:</label>
         <div class="col-sm-7">
-                <input id="tcost" class="form-control" type="text" value="{{total_cost}}" aria-label="readonly input example" readonly>
-            </div>
+          <input id="tcost" class="form-control" type="text" value="{{total_cost}}" aria-label="readonly input example" readonly>
         </div>
-        <div>
-    <button type="submit" name="action" value="release" class="btn btn-success mx-3">Release</button>
-  <button type="submit" name="action" value="cancel" class="btn btn-secondary">Cancel</button>
-  </div>
-</form>
+      </div>
+
+
+      <div class="row mb-4">
+        <label for="duration" class="col-sm-4 col-form-label text-end">Duration:</label>
+        <div class="col-sm-7">
+          <input id="duration" class="form-control" type="text" value="{{duration}}" aria-label="readonly input example" readonly>
+        </div>
+      </div>
+      
+      <div>
+        <button type="submit" name="action" value="release" class="btn btn-success mx-3">Release</button>
+        <button type="submit" name="action" value="cancel" class="btn btn-secondary">Cancel</button>
+      </div>
+    </form>
   </div>
 </div>
 {% endblock %}
 
 {% block style %}
 <style>
-    .container {
-        background-color: #4DA8DA;
-        border-radius: 10px;
-    }
+  .container {
+    background-image: url('/static/release.jpeg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+  }
+  .card {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(2px);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0.2);
+  }
+  .custom input{
+    width: 100%;
+  }
 
-
-
-        
-    .card {
-        background-color: #FFD66B;
-    }
- .custom input{
-  width: 100%;
-  
-}
-
-    .custom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    h1 {
-        margin-top: 10px;
-        text-align: center;
-    }
+  .custom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1 {
+    margin-top: 10px;
+    text-align: center;
+  }
     
 </style>
 {% endblock %}

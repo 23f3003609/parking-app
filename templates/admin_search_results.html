@@ -9,15 +9,15 @@ Lot Search Results
 <hr>
 {%if key=='username' or key=='user_id'%}
 <div class="table border" style="overflow-x:auto; border-radius: 10px; margin-top: 20px; padding: 20px;">
-    <table class="table table-bordered table-hover" style="border:2px solid black ;">
-        <thead>
-            <tr>
-                <th scope="col">User ID</th>
-                <th scope="col">Email</th>
-                <th scope="col">Username</th>
-                <th scope="col" class="text-center">Action</th>
-            </tr>
-        </thead>
+  <table class="table table-bordered table-hover" style="border:2px solid black ;">
+    <thead>
+      <tr>
+        <th scope="col">User ID</th>
+        <th scope="col">Email</th>
+        <th scope="col">Username</th>
+        <th scope="col" class="text-center">Action</th>
+      </tr>
+      </thead>
         <tbody>
             {%for i in results %}
                 <tr>
@@ -49,23 +49,23 @@ Lot Search Results
         <a href="/admin_delete_lot/{{ lot.lot.lot_id }}" class="text-danger text-decoration-none">Delete</a>
       </div>
       <p class="text-success fw-bold" style="margin-bottom:5px" >Occupied: {{ lot.occupied_spots }} / {{ lot.total_spots }}</p>
-<hr style="margin:0; background-color: #007bff;width: 100%; border:1px solid black;">
+      <hr style="margin:0; background-color: #007bff;width: 100%; border:1px solid black;">
       <div class="spot-grid">
-        {% if lot.spots %}
-          {% for spot in lot.spots %}
-            {% if spot.status == 'available' %}
-              <div class="spot available">
-                <a href="/admin_view_spots/{{ lot.lot.lot_id }}/{{ spot.spot_id }}" class="text-decoration-none text-dark">A</a>
-              </div>
-            {% else %}
-              <div class="spot occupied">
-                <a href="/admin_view_spots/{{ lot.lot.lot_id }}/{{ spot.spot_id }}" class="text-decoration-none text-dark">O</a>
-              </div>
-            {% endif %}
-          {% endfor %}
-        {% else %}
-          <p class="text-muted">No spots available</p>
-        {% endif %}
+      {% if lot.spots %}
+      {% for spot in lot.spots %}
+      {% if spot.status == 'available' %}
+        <div class="spot available">
+          <a href="/admin_view_spots/{{ lot.lot.lot_id }}/{{ spot.spot_id }}" class="text-decoration-none text-dark">A</a>
+        </div>
+      {% else %}
+        <div class="spot occupied">
+          <a href="/admin_view_spots/{{ lot.lot.lot_id }}/{{ spot.spot_id }}" class="text-decoration-none text-dark">O</a>
+        </div>
+      {% endif %}
+      {% endfor %}
+      {% else %}
+        <p class="text-muted">No spots available</p>
+      {% endif %}
       </div>
     </div>
     {% endfor %}
@@ -112,7 +112,7 @@ Lot Search Results
 
 .parking-lot-card {
   width: 280px;
-  background-color: #fdf6ec;
+  background-color:rgb(240, 224, 203);
   border: 2px solid #ddd;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;

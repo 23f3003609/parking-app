@@ -6,11 +6,6 @@ Summary Dashboard
 {% block content %}
 <h1>Summary</h1>
 <hr>
-<!--<h3>Active Transactions: {{ongoing_count}}</h3>
-<h3>Past Transactions: {{completed_count}}</h3>
-<h3>Total Spots Booked: {{total_count}}</h3>
-<h3>Total Cost Spent: {{total_cost}}</h3>
--->
 
 <div class="row text-center">
     <div class="col-md-3">
@@ -37,13 +32,12 @@ Summary Dashboard
             <div class="card-body"><h4>{{total_cost}}</h4></div>
         </div>
     </div>
-    <!-- Repeat for other metrics -->
 </div>
 
 <div class="my-5">
-                    <h3 class="mx-4 my-3 mt-5 text-center">Generated Cards Pie Chart</h3> 
-                    <img src="/static/user_summary_pie.png" alt="Generated Cards Pie Chart" class="img-fluid mx-auto d-block mt-4" style="width: 50%;">
-                </div>
+    <h3 class="mx-4 my-3 mt-5 text-center">Generated Cards Pie Chart</h3>
+    <img src="/static/user_summary_pie.png" alt="Generated Cards Pie Chart" class="img-fluid mx-auto d-block mt-4" style="width: 50%;">
+</div>
 
 
 {% endblock %}
@@ -55,6 +49,16 @@ Summary Dashboard
         background-color: #4DA8DA;
 
     }
+    .card{
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+    }
+    .card:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+        background-color: #ffffff;
+}
     hr{
         margin-top: 10px;
         margin-bottom: 20px;
