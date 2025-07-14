@@ -61,6 +61,7 @@ It helps admins manage parking lots, spots, reservations and provides a user-fri
     │ ├── user_lot_dashboard.html
     │ ├── user_summary.html
     │ └── view_profile.html
+  ```
 
 
 ---
@@ -81,8 +82,7 @@ It helps admins manage parking lots, spots, reservations and provides a user-fri
 
 Follow these steps to run **SmartLot** locally:
 
-```
-bash
+```bash
 # 1️⃣ Create a virtual environment
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
