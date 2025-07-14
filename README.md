@@ -5,7 +5,7 @@ It helps admins manage parking lots, spots, reservations and provides a user-fri
 
 ---
 
-## 📁 Project Structure
+**📁 Project Structure**
 
   ```
     SmartLot/
