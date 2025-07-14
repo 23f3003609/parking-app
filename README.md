@@ -62,10 +62,6 @@ It helps admins manage parking lots, spots, reservations and provides a user-fri
     │ ├── user_summary.html
     │ └── view_profile.html
   ```
-
-
----
-
 ---
 
 ## 🛠️ Tech Stack
@@ -82,43 +78,52 @@ It helps admins manage parking lots, spots, reservations and provides a user-fri
 
 Follow these steps to run **SmartLot** locally:
 
-```bash
 # 1️⃣ Create a virtual environment
+```bash
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
 # 2️⃣ Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
 # 3️⃣ (Optional) Freeze dependencies
+```bash
 pip freeze > requirements.txt
+```
 
 # 4️⃣ Run the app
+```
 python3 app.py
+```
 
 ---
 
 **👤 Create Admin & User Accounts (Initial Setup)**
 
-```
-bash
+```bash
 python3
+```
 
 ##Then run these commands inside the Python shell:
 
-python
+```python
 from app import *
 
 # Create an admin user
 user1 = User(username="Admin123", email="admin@user.com", password="1234", address="XXXX", pincode=XXXX, phone_number=1234567890, type="admin")
 db.session.add(user1)
 db.session.commit()
-
+```
 ---
 
 ✅ **Done!**
 Now you can log in as the admin or user, add parking lots, manage spots, book, release, and track all parking operations.
 
-📸 Tip: Add screenshots or deployment links to make your README more attractive!
+---
+
+**Feel free to customize this README with screenshots, deployment notes, or contributors!**
 
 **Happy Smart Parking! 🚗✨**
