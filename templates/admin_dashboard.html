@@ -13,7 +13,7 @@ Home
 
     {% for lot in lots %}
     <div class="parking-lot-card p-3 shadow rounded">
-      <h5 class="fw-bold">Parking Lot #{{ lot.lot.lot_id }}</h5>
+      <h5 class="fw-bold">Parking Lot #{{ lot.lot.location_name }}</h5>
       <div class="mb-2">
         <a href="/admin_edit_lot/{{ lot.lot.lot_id }}" class="text-warning text-decoration-none me-2">Edit</a>|
         <a href="/admin_delete_lot/{{ lot.lot.lot_id }}" class="text-danger text-decoration-none">Delete</a>
