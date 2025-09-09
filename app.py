@@ -3,7 +3,6 @@ from application.config import Config
 from application.database import db
 from application.models import User
 from application.controllers import *
-from flask_migrate import Migrate
 
 
 def create_app():
@@ -38,7 +37,6 @@ from application.controllers import register_routes
 # Initialize the app
 app = create_app()
 register_routes(app)
-migrate = Migrate(app, db)
 import secrets
 # app.secret_key = secrets.token_hex(16)
 
